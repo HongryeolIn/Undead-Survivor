@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -19,14 +20,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        InputVec.x = Input.GetAxisRaw("Horizontal");
-        InputVec.y = Input.GetAxisRaw("Vertical");
         
+    }
+
+    void OnMove(InputValue value)
+    {
+        InputVec = value.Get<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        Vector2 NextVec =  InputVec.normalized * Speed * Time.fixedDeltaTime;
+        Vector2 NextVec =  InputVec * Speed * Time.fixedDeltaTime;
         Rigid.MovePosition(Rigid.position + NextVec);
     }
 }

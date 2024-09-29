@@ -15,19 +15,8 @@ public class Player : MonoBehaviour
         Rigid = GetComponent<Rigidbody2D>();
         Spriter = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
-        Speed = 3;
+        Speed = 3f;
     }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     void OnMove(InputValue value)
     {
         InputVec = value.Get<Vector2>();
